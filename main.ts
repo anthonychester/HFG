@@ -1,12 +1,13 @@
 //interface
 //|||||||||||||||scale border width
-import { Sprite } from "pixi.js";
 import { applt } from "./app";
 import { MainMeue } from "./MainMeue";
 import { Settings } from "./Settings";
 import { Info } from "./Info";
 import { Controls } from "./Controls";
 import { MapSelect } from "./MapSelect";
+import { PlayerSelect } from "./PlayerSelect";
+import { LoadingScreen } from "./LoadingScreen";
 
 const inputImageAspectRatio = window.innerWidth / window.innerHeight;
 
@@ -41,7 +42,9 @@ app.secne = {
   Settings: new Settings(app),
   Info: new Info(app),
   Controls: new Controls(app),
-  MapSelect: new MapSelect(app)
+  MapSelect: new MapSelect(app),
+  PlayerSelect: new PlayerSelect(app),
+  LoadingScreen: new LoadingScreen(app)
 };
 
 app.curent = app.secne.MainMeue;

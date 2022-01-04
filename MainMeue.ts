@@ -245,9 +245,9 @@ export class MainMeue extends Container {
       if (this.app.curent === this) {
         //@ts-ignore
         this.app.curent.zIndex = 0;
-        this.app.curent = this.app.secne.MapSelect;
-        this.app.secne.MapSelect.setMode("l");
-        this.app.secne.MapSelect.onswitchto(this);
+        this.app.curent = this.app.secne.PlayerSelect;
+        this.app.secne.PlayerSelect.setMode("l");
+        this.app.secne.PlayerSelect.onswitchto(this);
         //@ts-ignore
         this.app.curent.zIndex = 1;
       }

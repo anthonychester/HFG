@@ -28,6 +28,9 @@ export interface dataT {
   maps: {
     folderNames: String[];
   };
+  players: {
+    folderNames: String[];
+  };
 }
 
 export class applt extends Application {

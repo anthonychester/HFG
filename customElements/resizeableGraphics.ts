@@ -1,10 +1,10 @@
 import { Graphics, Sprite, Text } from "pixi.js";
 import { applt } from "./app";
-
+import { resizeableText } from "./resizeableText";
 export class resizeableGraphics extends Graphics {
   app: applt;
   resize: any;
-  text: Text;
+  text: Text | resizeableText;
   sprite: Sprite;
   status: any;
 

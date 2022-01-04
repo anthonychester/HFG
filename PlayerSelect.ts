@@ -5,20 +5,13 @@ import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
 import { window } from "./Standard";
 
-interface data {
-  p1: String;
-  p2: String;
-  map: String;
-  mode: String;
-}
-
-export class MapSelect extends Container {
+export class PlayerSelect extends Container {
   app: applt;
   BH: ButtonHandler;
   previous: any;
   mode: String;
   selected: resizeableGraphics;
-  data: data;
+  p1: String;
 
   constructor(app) {
     super();
@@ -57,61 +50,70 @@ export class MapSelect extends Container {
   onswitchto(pre) {
     this.previous = pre;
 
-    for (let i = 0; i < this.app.data.maps.folderNames.length; i++) {
-      let map = new resizeableGraphics(this.app);
-      map.status = this.app.data.maps.folderNames[i];
+    for (let i = 0; i < this.app.data.players.folderNames.length; i++) {
+      let player = new resizeableGraphics(this.app);
+      player.status = this.app.data.players.folderNames[i];
       const soloStyle = new TextStyle({
         fill: ["#000000"],
         fontSize: 14
       });
       let xyt: xypair = this.app.toPos({ x: 30 + i * 105, y: 15 + 23.5 });
-      map.text = new resizeableText(
+      player.text = new resizeableText(
         this.app,
-        this.app.data.maps.folderNames[i],
+        this.app.data.players.folderNames[i],
         soloStyle,
         xyt.x,
         xyt.y
       );
-      map.onResize((color = 0x4f4f4f) => {
-        map.clear();
-        map.lineStyle(4, 0x000000, 1);
-        map.beginFill(color);
+      player.onResize((color = 0x4f4f4f) => {
+        player.clear();
+        player.lineStyle(4, 0x000000, 1);
+        player.beginFill(color);
         let xy: xypair = this.app.toPos({ x: 25 + i * 100, y: 15 });
-        map.x = xy.x;
-        map.y = xy.y;
+        player.x = xy.x;
+        player.y = xy.y;
         let xysize: xypair = this.app.toPos({ x: 50, y: 50 });
-        map.drawRect(0, 0, xysize.x, xysize.y);
-        map.endFill();
+        player.drawRect(0, 0, xysize.x, xysize.y);
+        player.endFill();
       });
-      map.onClick(() => {
-        if (this.selected === map) {
-          //this map doulbe clicked
-          this.data.map = this.selected.status;
-          //@ts-ignore
-          this.app.curent.zIndex = 0;
-          this.app.curent = this.app.secne.LoadingScreen;
-          this.app.secne.LoadingScreen.setData(this.data);
-          this.app.secne.LoadingScreen.onswitchto(this);
-          //@ts-ignore
-          this.app.curent.zIndex = 1;
+      player.onClick(() => {
+        if (this.selected === player) {
+          //this player doulbe clicked
+          if (this.p1) {
+            //@ts-ignore
+            this.app.curent.zIndex = 0;
+            this.app.curent = this.app.secne.MapSelect;
+            this.app.secne.MapSelect.setData({
+              mode: this.mode,
+              p1: this.p1,
+              p2: this.selected.status
+            });
+            this.app.secne.MapSelect.onswitchto(this);
+            //@ts-ignore
+            this.app.curent.zIndex = 1;
+          } else {
+            //@ts-ignore
+            this.p1 = this.selected.status;
+            this.selected.resize();
+            this.selected = undefined;
+          }
         } else {
           if (this.selected) {
             this.selected.resize();
           }
-          this.selected = map;
-          map.resize(0x9f9f9f);
+          this.selected = player;
+          player.resize(0x9f9f9f);
         }
       });
-      map.resize();
-      this.addChild(map);
-      this.addChild(map.text);
+      player.resize();
+      this.addChild(player);
+      this.addChild(player.text);
     }
   }
 
   update() {}
 
-  setData(initdata) {
-    this.mode = initdata.mode;
-    this.data = initdata;
+  setMode(mode) {
+    this.mode = mode;
   }
 }
