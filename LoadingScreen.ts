@@ -18,6 +18,7 @@ export class LoadingScreen extends Container {
   dot3: resizeableGraphics;
   time: number;
   text: resizeableText;
+  loaded: boolean;
 
   constructor(app) {
     super();
@@ -26,10 +27,27 @@ export class LoadingScreen extends Container {
     //@ts-ignore
     this.sortableChildren = true;
     this.interactive = true;
+    this.loaded = false;
 
     this.time = 0;
 
     this.setup();
+    this.onload();
+  }
+
+  onload() {
+    console.log(this);
+    if (this === this.app.curent) {
+      //@ts-ignore
+      this.app.curent.zIndex = 0;
+      this.app.curent = this.app.secne.Stage;
+      this.app.secne.Stage.setData(this.data);
+      this.app.secne.Stage.onswitchto(this);
+      //@ts-ignore
+      this.app.curent.zIndex = 1;
+    } else {
+      this.loaded = true;
+    }
   }
 
   setup() {
@@ -131,7 +149,17 @@ export class LoadingScreen extends Container {
     }
   }
 
-  onswitchto() {}
+  onswitchto() {
+    if (this.loaded) {
+      //@ts-ignore
+      this.app.curent.zIndex = 0;
+      this.app.curent = this.app.secne.Stage;
+      this.app.secne.Stage.setData(this.data);
+      this.app.secne.Stage.onswitchto(this);
+      //@ts-ignore
+      this.app.curent.zIndex = 1;
+    }
+  }
 
   setData(initData) {
     this.data = initData;

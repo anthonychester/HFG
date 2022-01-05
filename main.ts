@@ -8,7 +8,7 @@ import { Controls } from "./Controls";
 import { MapSelect } from "./MapSelect";
 import { PlayerSelect } from "./PlayerSelect";
 import { LoadingScreen } from "./LoadingScreen";
-
+import { Stage } from "./Stage"
 const inputImageAspectRatio = window.innerWidth / window.innerHeight;
 
 const outputImageAspectRatio = 16 / 9;
@@ -44,7 +44,8 @@ app.secne = {
   Controls: new Controls(app),
   MapSelect: new MapSelect(app),
   PlayerSelect: new PlayerSelect(app),
-  LoadingScreen: new LoadingScreen(app)
+  LoadingScreen: new LoadingScreen(app),
+  Stage: new Stage(app)
 };
 
 app.curent = app.secne.MainMeue;
@@ -95,6 +96,18 @@ for (let i in app.secne) {
 
 app.loader
   .add("./src/data.json", {
+    crossOrigin: "anonymous"
+  })
+  .add("./src/images/circle/spritesheet.json", {
+    crossOrigin: "anonymous"
+  })
+  .add("./src/players/MH1/spritesheet.json", {
+    crossOrigin: "anonymous"
+  })
+  .add("./src/players/MH2/spritesheet.json", {
+    crossOrigin: "anonymous"
+  })
+  .add("./src/maps/map1/data.json", {
     crossOrigin: "anonymous"
   })
   .add("./src/maps/map1/map.png", {
