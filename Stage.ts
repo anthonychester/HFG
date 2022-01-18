@@ -5,6 +5,7 @@ import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { Player } from "./src/scripts/Player";
 import { collisionDetector } from "./src/scripts/collisionDetector";
 import { animationObject } from "./src/scripts/animationHandler";
+import { physicsEngine } from "./src/scripts/physicsEngine";
 
 interface data {
   p1: String;
@@ -22,6 +23,8 @@ export class Stage extends Container {
   BH: ButtonHandler;
   CD: collisionDetector;
   data: data;
+  physicsEngine: physicsEngine;
+
   constructor(app) {
     super();
 
@@ -35,6 +38,8 @@ export class Stage extends Container {
     window.addEventListener("updatesize", () => {
       this.resize();
     });
+
+    this.physicsEngine = new physicsEngine(this.app);
   }
 
   onswitchto() {}
@@ -54,6 +59,7 @@ export class Stage extends Container {
   }
 
   update(delta) {
+    this.physicsEngine.update(delta);
     this.CD.check();
     this.player1.update(delta);
     this.player2.update(delta);
@@ -62,15 +68,26 @@ export class Stage extends Container {
   setData(data) {
     this.data = data;
 
-    let MH1sheet = this.app.loader.resources[
-      "./src/players/MH1/spritesheet.json"
+    let p1sheet = this.app.loader.resources[
+      "./src/players/" + this.data.p1 + "/spritesheet.json"
     ];
-    let MH2sheet = this.app.loader.resources[
-      "./src/players/MH2/spritesheet.json"
+    let p2sheet = this.app.loader.resources[
+      "./src/players/" + this.data.p2 + "/spritesheet.json"
     ];
 
-    let mapData = this.app.loader.resources["./src/maps/map1/data.json"];
-    let mapImg = this.app.loader.resources["./src/maps/map1/map.png"];
+    let p1data = this.app.loader.resources[
+      "./src/players/" + this.data.p2 + "/data.json"
+    ];
+    let p2data = this.app.loader.resources[
+      "./src/players/" + this.data.p2 + "/data.json"
+    ];
+
+    let mapData = this.app.loader.resources[
+      "./src/maps/" + this.data.map + "/data.json"
+    ];
+    let mapImg = this.app.loader.resources[
+      "./src/maps/" + this.data.map + "/map.png"
+    ];
 
     this.map = new Sprite(mapImg.texture);
 
@@ -80,8 +97,8 @@ export class Stage extends Container {
 
     this.BH = new ButtonHandler(this.app);
 
-    let animations1 = MH1sheet.spritesheet.animations;
-    let animations2 = MH2sheet.spritesheet.animations;
+    let animations1 = p1sheet.spritesheet.animations;
+    let animations2 = p2sheet.spritesheet.animations;
 
     let anis1: animationObject = {
       death: animations1["death"],
@@ -109,21 +126,29 @@ export class Stage extends Container {
 
     this.player1 = new Player(
       this.app,
+      this,
       "player1",
       anis1["idle"],
       animations1,
-      this.CD
+      this.CD,
+      p1data
     );
     this.player2 = new Player(
       this.app,
+      this,
       "player2",
       anis2["idle"],
       animations2,
-      this.CD
+      this.CD,
+      p2data
     );
     //set speed, start play
     this.CD.add("player1", this.player1);
     this.CD.add("player2", this.player2);
+
+    this.physicsEngine.add(this.player1, p1data);
+    this.physicsEngine.add(this.player2, p1data);
+
     this.resize();
     this.loaded = true;
   }

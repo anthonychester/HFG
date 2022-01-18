@@ -3,7 +3,7 @@ import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { applt, xypair } from "./app";
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
-import { window } from "./Standard";
+import { windowFrame } from "./Standard";
 
 interface data {
   p1: String;
@@ -47,7 +47,7 @@ export class MapSelect extends Container {
 
     this.addChild(backround);
 
-    let win = new window(this.app);
+    let win = new windowFrame(this.app);
 
     this.addChild(win);
   }

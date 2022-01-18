@@ -1,7 +1,7 @@
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { applt, xypair } from "./app";
 
-export class window extends resizeableGraphics {
+export class windowFrame extends resizeableGraphics {
   app: applt;
   constructor(app) {
     super(app);

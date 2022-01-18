@@ -4,7 +4,7 @@ import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { resizeableText } from "./customElements/resizeableText";
 import { resizeableButtion } from "./customElements/resizeableButtion";
-import { window } from "./Standard";
+import { windowFrame } from "./Standard";
 
 export class Controls extends Container {
   app: applt;
@@ -13,6 +13,7 @@ export class Controls extends Container {
   press: any;
   cur: any;
   player: string;
+  event: CustomEvent;
 
   constructor(app) {
     super();
@@ -26,6 +27,13 @@ export class Controls extends Container {
     this.interactive = true;
     this.cur = null;
     this.player = "player1";
+
+    this.event = new CustomEvent("Pair", {
+      detail: {},
+      bubbles: true,
+      cancelable: true,
+      composed: false
+    });
 
     this.setup();
   }
@@ -43,7 +51,7 @@ export class Controls extends Container {
 
     this.addChild(backround);
 
-    let win = new window(this.app);
+    let win = new windowFrame(this.app);
 
     this.addChild(win);
 
@@ -146,6 +154,17 @@ export class Controls extends Container {
     });
     this.addChild(down);
     this.addChild(new resizeableText(this.app, "down", subStyle, 25, 140));
+
+    let pair = new resizeableButtion(this.app, 150, 120, 35, 25, {
+      text: new resizeableText(this.app, "pair", buttonStyle, 10.5, 6.5),
+      rscolor: 0x737373
+    });
+
+    pair.onClick(() => {
+      //console.log(window);
+      window.dispatchEvent(this.event);
+    });
+    this.addChild(pair);
   }
 
   onUp() {}

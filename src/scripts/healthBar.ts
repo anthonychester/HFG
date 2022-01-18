@@ -63,10 +63,6 @@ export class healthBar {
     this.app.stage.addChild(this.backround);
 
     this.graph.beginFill(0x00ff00);
-    this.graph.x = 10;
-    this.graph.y = 10;
-    this.graph.drawRect(0, 0, 200, 50);
-    this.graph.endFill();
 
     this.app.stage.addChild(this.graph);
 

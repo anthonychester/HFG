@@ -47,8 +47,9 @@ export class Player {
   padding: number;
   HB: healthBar;
   CD: collisionDetector;
+  pdata: any; //add porper data type
 
-  constructor(app, player, textures, animations, CD) {
+  constructor(app, cont, player, textures, animations, CD, pdata) {
     this.x = 100;
     this.y = 0;
     this.app = app;
@@ -70,6 +71,7 @@ export class Player {
     this.player = player;
     this.controls = app.data.control[player];
     this.padding = 9;
+    this.pdata = pdata;
 
     let wh = { x: this.app.view.width, y: this.app.view.height };
 
@@ -93,7 +95,7 @@ export class Player {
     this.sprite.animationSpeed = 0.167;
     this.sprite.play();
     this.sprite.x = 50;
-    app.stage.addChild(this.sprite);
+    cont.addChild(this.sprite);
     //@ts-ignore
     this.BH = new ButtonHandler(app);
     this.CD = CD;
@@ -114,7 +116,7 @@ export class Player {
       this.controls
     );
 
-    app.stage.addChild(this.text);
+    cont.addChild(this.text);
 
     this.HB = new healthBar(app, player, this.health, this.lives);
   }
@@ -156,6 +158,7 @@ export class Player {
   };
 
   applyForces = () => {
+    /*
     this.gravitySpeed += this.gravity;
     this.x += this.speedX;
     this.y += this.speedY + this.gravitySpeed;
@@ -197,6 +200,7 @@ export class Player {
     } else if (this.speedX < 0) {
       this.speedX += 0.2;
     }
+    */
   };
 
   //limit maximue foreces
@@ -214,7 +218,7 @@ export class Player {
     } else if (this.BH.isPress(this.controls.DOWN)) {
       this.down();
     } else {
-      this.applyDrag();
+      //this.applyDrag();
     }
     if (this.BH.isPress(this.controls.UP)) {
       this.up();

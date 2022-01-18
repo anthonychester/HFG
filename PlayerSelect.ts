@@ -3,7 +3,7 @@ import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { applt, xypair } from "./app";
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
-import { window } from "./Standard";
+import { windowFrame } from "./Standard";
 
 export class PlayerSelect extends Container {
   app: applt;
@@ -40,7 +40,7 @@ export class PlayerSelect extends Container {
 
     this.addChild(backround);
 
-    let win = new window(this.app);
+    let win = new windowFrame(this.app);
 
     this.addChild(win);
   }

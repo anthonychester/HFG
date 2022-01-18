@@ -304,7 +304,7 @@ export class MainMeue extends Container {
         this.app,
         this.app.data.version,
         soloStyle,
-        440,
+        400,
         10
       );
 

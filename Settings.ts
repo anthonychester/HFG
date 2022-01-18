@@ -2,7 +2,7 @@ import { Container, Text, Sprite, TextStyle } from "pixi.js";
 import { applt, xypair } from "./app";
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { ButtonHandler } from "./src/scripts/ButtonHandler";
-import { window } from "./Standard";
+import { windowFrame } from "./Standard";
 
 export class Settings extends Container {
   app: applt;
@@ -32,7 +32,7 @@ export class Settings extends Container {
 
     this.addChild(backround);
 
-    let win = new window(this.app);
+    let win = new windowFrame(this.app);
     this.addChild(win);
 
     let bar = new resizeableGraphics(this.app);

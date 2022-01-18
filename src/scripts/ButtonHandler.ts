@@ -1,5 +1,4 @@
-//@ts-ignore Some imports fall to
-import { Application, TextStyle, Text } from "pixi.js";
+import { Application } from "pixi.js";
 
 export interface press {
   code: number;
@@ -20,7 +19,6 @@ export class ButtonHandler {
   app: Application;
   pressed: press[];
   delay: Array<number>; //An array of char used _sec ago
-  text: Text;
   elapedTime: number;
   callbackPress: any;
 
@@ -28,14 +26,6 @@ export class ButtonHandler {
     this.app = app;
     this.pressed = [];
     this.elapedTime = 0;
-
-    const style = new TextStyle({
-      fill: ["#ffffff"]
-    });
-
-    this.text = new Text("", style);
-    this.text.y = 400;
-    app.stage.addChild(this.text);
 
     document.addEventListener("keydown", this.onKeyDown.bind(this));
     document.addEventListener("keyup", this.onKeyUp.bind(this));
@@ -68,8 +58,9 @@ export class ButtonHandler {
         this.pressed[i].isCurPress = false;
       }
     }
-
-    this.callbackPress(e);
+    if (this.callbackPress) {
+      this.callbackPress(e);
+    }
   };
 
   isPress = (code: number) => {

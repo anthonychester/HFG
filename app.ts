@@ -40,6 +40,8 @@ export class applt extends Application {
   curent: object;
   //@ts-ignore;
   secne: sences;
+  mods: any;
+  inputHandler: any;
 
   toPos = (obj: xypair) => {
     //convert app xy to real xy

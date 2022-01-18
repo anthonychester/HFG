@@ -7,7 +7,7 @@ export class MainMeue {
 
   constructor(app) {
     this.app = app;
-    this.platforms = new Graphics();
+    //this.platforms = new Graphics();
 
     //this.platforms.beginFill(0xff00ff);
     //this.platforms.lineStyle(10, 0x00ff00);
@@ -15,10 +15,10 @@ export class MainMeue {
     //this.platforms.endFill();
 
     //@ts-ignore
-    this.platforms.zIndex = 11;
+    //this.platforms.zIndex = 11;
     //console.log("form: ", this.platforms);
 
-    this.app.stage.addChild(this.platforms);
+    //this.app.stage.addChild(this.platforms);
   }
 
   resize = () => {};

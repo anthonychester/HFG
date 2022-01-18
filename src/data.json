@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "dev 0.0.1",
   "control": {
     "player1": {
       "UP": 87,
@@ -19,9 +19,12 @@
     }
   },
   "maps": {
-    "folderNames": ["map1", "map2"]
+    "folderNames": ["map1"]
   },
   "players": {
     "folderNames": ["MH1", "MH2"]
+  },
+  "physics": {
+    "gravity": 0.4
   }
 }

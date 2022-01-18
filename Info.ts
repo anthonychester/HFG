@@ -3,7 +3,7 @@ import { applt, xypair } from "./app";
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { resizeableText } from "./customElements/resizeableText";
-import { window } from "./Standard";
+import { windowFrame } from "./Standard";
 
 export class Info extends Container {
   app: applt;
@@ -33,7 +33,7 @@ export class Info extends Container {
 
     this.addChild(backround);
 
-    let win = new window(this.app);
+    let win = new windowFrame(this.app);
 
     this.addChild(win);
 

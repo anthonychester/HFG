@@ -8,7 +8,10 @@ import { Controls } from "./Controls";
 import { MapSelect } from "./MapSelect";
 import { PlayerSelect } from "./PlayerSelect";
 import { LoadingScreen } from "./LoadingScreen";
-import { Stage } from "./Stage"
+import { Stage } from "./Stage";
+import JoyconMod from "./mods/Joycon/main";
+import { inputHandler } from "./src/scripts/inputHandler";
+
 const inputImageAspectRatio = window.innerWidth / window.innerHeight;
 
 const outputImageAspectRatio = 16 / 9;
@@ -32,6 +35,8 @@ const app = new applt(outputWidth, outputHeight, {
   backgroundColor: 0x1099bb
 });
 
+app.mods = {};
+
 //@ts-ignore
 app.stage.sortableChildren = true;
 
@@ -49,7 +54,6 @@ app.secne = {
 };
 
 app.curent = app.secne.MainMeue;
-
 //@ts-ignore
 app.curent.zIndex = 1;
 
@@ -82,10 +86,19 @@ function resize() {
   window.dispatchEvent(updatesize);
 }
 
+let loaded = false;
+
 function setup() {
   let Data = app.loader.resources["./src/data.json"];
   app.data = Data.data;
+
+  app.mods["JoyconMod"] = new JoyconMod(
+    app,
+    app.loader.resources["./mods/Joycon/data.json"].data
+  );
+  app.inputHandler = new inputHandler(app);
   resize();
+  let loaded = true;
 }
 app.xm = app.view.width / 500;
 app.ym = app.view.height / 200;
@@ -104,7 +117,13 @@ app.loader
   .add("./src/players/MH1/spritesheet.json", {
     crossOrigin: "anonymous"
   })
+  .add("./src/players/MH1/data.json", {
+    crossOrigin: "anonymous"
+  })
   .add("./src/players/MH2/spritesheet.json", {
+    crossOrigin: "anonymous"
+  })
+  .add("./src/players/MH2/data.json", {
     crossOrigin: "anonymous"
   })
   .add("./src/maps/map1/data.json", {
@@ -116,12 +135,18 @@ app.loader
   .add("LEMONMILK-Regular", "./src/fonts/LEMONMILK-Regular.otf", {
     crossOrigin: "anonymous"
   })
+  .add("./mods/Joycon/data.json", {
+    crossOrigin: "anonymous"
+  })
   .load(setup);
 
 // Listen for animate update
 app.ticker.add(function (delta) {
-  //@ts-ignore
-  app.curent.update(delta);
+  if (loaded) {
+    //@ts-ignore
+    app.curent.update(delta);
+    app.inputHandler.update(delta);
+  }
 });
 
 window.addEventListener("resize", resize);
