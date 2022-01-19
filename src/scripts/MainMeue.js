@@ -2,9 +2,6 @@
 import { Graphics, Application } from "pixi.js";
 
 export class MainMeue {
-  app: Application;
-  platforms: Graphics;
-
   constructor(app) {
     this.app = app;
     //this.platforms = new Graphics();
@@ -21,10 +18,10 @@ export class MainMeue {
     //this.app.stage.addChild(this.platforms);
   }
 
-  resize = () => {};
+  resize() {}
 
-  getOpen = () => {
-    const graphy: Graphics = new Graphics();
+  getOpen() {
+    const graphy = new Graphics();
 
     // we give instructions in order. begin fill, line style, draw circle, end filling
     graphy.beginFill(0xff00ff);
@@ -93,7 +90,7 @@ export class MainMeue {
 
     }
     */
-  };
+  }
 
-  loop = (delta) => {};
+  loop(delta) {}
 }

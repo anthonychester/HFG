@@ -1,11 +1,4 @@
-interface entpair {
-  ent: any;
-  data: any;
-}
-
 export class physicsEngine {
-  ent: entpair[];
-  app: any;
 
   constructor(app) {
     this.ent = [];

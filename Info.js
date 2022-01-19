@@ -6,9 +6,6 @@ import { resizeableText } from "./customElements/resizeableText";
 import { windowFrame } from "./Standard";
 
 export class Info extends Container {
-  app: applt;
-  BH: ButtonHandler;
-  previous: any;
 
   constructor(app) {
     super();
@@ -26,7 +23,7 @@ export class Info extends Container {
       backround.beginFill(0x00ff00);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
     });
@@ -42,10 +39,10 @@ export class Info extends Container {
       bar.clear();
       bar.lineStyle(4, 0x000000, 1);
       bar.beginFill(0x4f4f4f);
-      let xy: xypair = this.app.toPos({ x: 21.3, y: 12 });
+      let xy = this.app.toPos({ x: 21.3, y: 12 });
       bar.x = xy.x;
       bar.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 457, y: 20 });
+      let xysize = this.app.toPos({ x: 457, y: 20 });
       bar.drawRect(0, 0, xysize.x, xysize.y);
       bar.endFill();
     });
@@ -63,14 +60,14 @@ export class Info extends Container {
       back.clear();
       back.lineStyle(4, 0x000000, 1);
       back.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 21.3, y: 12 });
+      let xy = this.app.toPos({ x: 21.3, y: 12 });
       back.x = xy.x;
       back.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 20 });
+      let xysize = this.app.toPos({ x: 35, y: 20 });
       back.drawRect(0, 0, xysize.x, xysize.y);
       back.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 24, y: 14 });
+      let pos = this.app.toPos({ x: 24, y: 14 });
 
       back.sprite.x = pos.x;
       back.sprite.y = pos.y;
@@ -126,10 +123,10 @@ export class Info extends Container {
     CreditsW.onResize(() => {
       CreditsW.clear();
       CreditsW.beginFill(0xaaaaaa);
-      let xy: xypair = this.app.toPos({ x: 30, y: 63 });
+      let xy = this.app.toPos({ x: 30, y: 63 });
       CreditsW.x = xy.x;
       CreditsW.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 440, y: 60 });
+      let xysize = this.app.toPos({ x: 440, y: 60 });
       CreditsW.drawRect(0, 0, xysize.x, xysize.y);
       CreditsW.endFill();
     });
@@ -164,10 +161,10 @@ export class Info extends Container {
     ugcW.onResize(() => {
       ugcW.clear();
       ugcW.beginFill(0xaaaaaa);
-      let xy: xypair = this.app.toPos({ x: 30, y: 145 });
+      let xy = this.app.toPos({ x: 30, y: 145 });
       ugcW.x = xy.x;
       ugcW.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 440, y: 25 });
+      let xysize = this.app.toPos({ x: 440, y: 25 });
       ugcW.drawRect(0, 0, xysize.x, xysize.y);
       ugcW.endFill();
     });

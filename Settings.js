@@ -5,10 +5,6 @@ import { ButtonHandler } from "./src/scripts/ButtonHandler";
 import { windowFrame } from "./Standard";
 
 export class Settings extends Container {
-  app: applt;
-  BH: ButtonHandler;
-  previous: any;
-
   constructor(app) {
     super();
     this.app = app;
@@ -25,7 +21,7 @@ export class Settings extends Container {
       backround.beginFill(0xff0000);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
     });
@@ -40,10 +36,10 @@ export class Settings extends Container {
       bar.clear();
       bar.lineStyle(4, 0x000000, 1);
       bar.beginFill(0x4f4f4f);
-      let xy: xypair = this.app.toPos({ x: 21.1, y: 11 });
+      let xy = this.app.toPos({ x: 21.1, y: 11 });
       bar.x = xy.x;
       bar.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 457, y: 20 });
+      let xysize = this.app.toPos({ x: 457, y: 20 });
       bar.drawRect(0, 0, xysize.x, xysize.y);
       bar.endFill();
     });
@@ -61,14 +57,14 @@ export class Settings extends Container {
       back.clear();
       back.lineStyle(4, 0x000000, 1);
       back.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 21.1, y: 11 });
+      let xy = this.app.toPos({ x: 21.1, y: 11 });
       back.x = xy.x;
       back.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 20 });
+      let xysize = this.app.toPos({ x: 35, y: 20 });
       back.drawRect(0, 0, xysize.x, xysize.y);
       back.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 24, y: 13 });
+      let pos = this.app.toPos({ x: 24, y: 13 });
 
       back.sprite.x = pos.x;
       back.sprite.y = pos.y;
@@ -114,14 +110,14 @@ export class Settings extends Container {
       p1up.clear();
       p1up.lineStyle(4, 0x000000, 1);
       p1up.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 65, y: 50 });
+      let xy = this.app.toPos({ x: 65, y: 50 });
       p1up.x = xy.x;
       p1up.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 25 });
+      let xysize = this.app.toPos({ x: 35, y: 25 });
       p1up.drawRect(0, 0, xysize.x, xysize.y);
       p1up.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 72.7, y: 55 });
+      let pos = this.app.toPos({ x: 72.7, y: 55 });
 
       p1up.text.x = pos.x;
       p1up.text.y = pos.y;

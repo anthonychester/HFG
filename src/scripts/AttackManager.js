@@ -6,14 +6,6 @@ import { ButtonHandler, control } from "./ButtonHandler";
 import { collisionDetector, colidedEvent } from "./collisionDetector";
 
 export class AttackManager {
-  app: Application;
-  BH: ButtonHandler;
-  AH: animationHandler;
-  CD: collisionDetector;
-  controls: control;
-  animations: animationObject;
-  player: string;
-
   constructor(player, app, BH, AH, CD, animations, controls) {
     this.player = player;
     this.app = app;
@@ -27,10 +19,10 @@ export class AttackManager {
   loop(delta) {
     if (this.BH.isPress(this.controls.ATTACK1)) {
       for (let i = 0; i < this.CD.colidables.length; i++) {
-        let name: string = this.CD.colidables[i].name;
+        let name = this.CD.colidables[i].name;
 
         if (name !== this.player) {
-          let pair: colidedEvent = this.CD.colid(this.player, name, 20);
+          let pair = this.CD.colid(this.player, name, 20);
           if (pair) {
             if (pair.ent1.name !== this.player) {
               pair.ent1.entity.takeHit(5);

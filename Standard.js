@@ -1,38 +1,42 @@
-import { Application, Container, Graphics, Sprite } from "pixi.js";
+import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { applt, xypair } from "./app";
-import { resizeableGraphics } from "./resizeableGraphics";
-import { ButtonHandler } from "./src/scripts/ButtonHandler";
 
-export class Settings extends Container {
-  app: applt;
-  BH: ButtonHandler;
-  previous: any;
-
+export class windowFrame extends resizeableGraphics {
   constructor(app) {
-    super();
+    super(app);
     this.app = app;
-    this.BH = new ButtonHandler(app);
-    this.BH.onPress((e) => {});
-    //@ts-ignore
-    this.sortableChildren = true;
-    this.interactive = true;
-
-    this.setup();
-  }
-  setup() {
-    let backround = new resizeableGraphics(this.app);
-    backround.onResize(() => {
-      backround.clear();
-      backround.beginFill(0xff0000);
-      backround.x = 0;
-      backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
-      backround.drawRect(0, 0, xy.x, xy.y);
-      backround.endFill();
+    this.onResize(() => {
+      this.clear();
+      this.beginFill(0x878686);
+      let xy = this.app.toPos({ x: 20, y: 10 });
+      this.x = xy.x;
+      this.y = xy.y;
+      let xysize = this.app.toPos({ x: 460, y: 178 });
+      this.drawRect(0, 0, xysize.x, xysize.y);
+      this.endFill();
     });
+  }
+}
 
-    this.addChild(backround);
+export class bar extends resizeableGraphics {
+  constructor(app) {
+    super(app);
+    this.app = app;
 
+    this.onResize(() => {
+      this.clear();
+      this.lineStyle(4, 0x000000, 1);
+      this.beginFill(0x4f4f4f);
+      let xy = this.app.toPos({ x: 21.3, y: 12 });
+      this.x = xy.x;
+      this.y = xy.y;
+      let xysize = this.app.toPos({ x: 457, y: 20 });
+      this.drawRect(0, 0, xysize.x, xysize.y);
+      this.endFill();
+    });
+  }
+}
+/*
     let back = new resizeableGraphics(this.app);
 
     back.sprite = Sprite.from("src/icons/arrow_back_ios_new_black_24dp.svg");
@@ -45,14 +49,14 @@ export class Settings extends Container {
       back.clear();
       back.lineStyle(4, 0x000000, 1);
       back.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 10, y: 10 });
+      let xy: xypair = this.app.toPos({ x: 21.3, y: 12 });
       back.x = xy.x;
       back.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 25 });
+      let xysize: xypair = this.app.toPos({ x: 35, y: 20 });
       back.drawRect(0, 0, xysize.x, xysize.y);
       back.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 15, y: 14 });
+      let pos: xypair = this.app.toPos({ x: 24, y: 14 });
 
       back.sprite.x = pos.x;
       back.sprite.y = pos.y;
@@ -79,15 +83,4 @@ export class Settings extends Container {
     });
 
     this.addChild(back);
-  }
-
-  onUp() {}
-
-  resize() {}
-
-  onswitchto(pre) {
-    this.previous = pre;
-  }
-
-  update() {}
-}
+    */

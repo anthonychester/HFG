@@ -3,22 +3,7 @@ import { TextStyle, Text, Graphics, Application } from "pixi.js";
 //Add resize function
 
 export class healthBar {
-  lives: number;
-  health: number;
-  graph: Graphics;
-  app: Application;
-  livesText: Text;
-  healthText: Text;
-  sta: string;
-  x: number;
-  y: number;
-  xs: number;
-  ys: number;
-  basex: number;
-  basey: number;
-  basesx: number;
-  basesy: number;
-  backround: Graphics;
+  
   constructor(app, player, health, lives) {
     this.lives = lives;
     this.health = health;
@@ -99,7 +84,7 @@ export class healthBar {
     this.graph.zIndex = 9;
   }
 
-  update = (health, lives) => {
+  update(health, lives) {
     this.lives = lives;
     this.health = health;
     this.livesText.text = this.lives.toString();
@@ -168,7 +153,7 @@ export class healthBar {
     }
   }
 
-  private drawBar(color) {
+  drawBar(color) {
     this.graph.beginFill(color);
     this.graph.x = this.x;
     this.graph.y = this.y;

@@ -29,7 +29,7 @@ let res = window.devicePixelRatio || 1;
 
 const app = new applt(outputWidth, outputHeight, {
   autoResize: true,
-  view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
+  view: document.getElementById("pixi-canvas"),
   //@ts-ignore
   resolution: res,
   backgroundColor: 0x1099bb

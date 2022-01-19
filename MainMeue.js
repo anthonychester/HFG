@@ -4,8 +4,6 @@ import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
 
 export class MainMeue extends Container {
-  app: applt;
-  previous: any;
   constructor(app) {
     super();
     this.app = app;
@@ -31,11 +29,11 @@ export class MainMeue extends Container {
       backround.beginFill(0x0000ff);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 135, y: 15 });
+      let pos = this.app.toPos({ x: 135, y: 15 });
 
       backround.sprite.x = pos.x;
       backround.sprite.y = pos.y;
@@ -57,14 +55,14 @@ export class MainMeue extends Container {
       info.clear();
       info.lineStyle(4, 0x000000, 1);
       info.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 20, y: 165 });
+      let xy = this.app.toPos({ x: 20, y: 165 });
       info.x = xy.x;
       info.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 25 });
+      let xysize = this.app.toPos({ x: 35, y: 25 });
       info.drawRect(0, 0, xysize.x, xysize.y);
       info.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 25.5, y: 168.5 });
+      let pos = this.app.toPos({ x: 25.5, y: 168.5 });
 
       info.sprite.x = pos.x;
       info.sprite.y = pos.y;
@@ -105,14 +103,14 @@ export class MainMeue extends Container {
       settings.clear();
       settings.lineStyle(4, 0x000000, 1);
       settings.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 448, y: 165 });
+      let xy = this.app.toPos({ x: 448, y: 165 });
       settings.x = xy.x;
       settings.y = xy.y;
-      let xysize: xypair = this.app.toPos({ x: 35, y: 25 });
+      let xysize = this.app.toPos({ x: 35, y: 25 });
       settings.drawRect(0, 0, xysize.x, xysize.y);
       settings.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 453, y: 168.5 });
+      let pos = this.app.toPos({ x: 453, y: 168.5 });
 
       settings.sprite.x = pos.x;
       settings.sprite.y = pos.y;
@@ -158,14 +156,14 @@ export class MainMeue extends Container {
       solo.clear();
       solo.lineStyle(4, 0x000000, 1);
       solo.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 440, y: 150 });
+      let xy = this.app.toPos({ x: 440, y: 150 });
       solo.x = xy.x;
       solo.y = xy.y;
 
-      let xy1: xypair = this.app.toPos({ x: 0, y: 0 });
-      let xy2: xypair = this.app.toPos({ x: 0, y: -25 });
-      let xy3: xypair = this.app.toPos({ x: -130, y: -25 });
-      let xy4: xypair = this.app.toPos({ x: -100, y: 0 });
+      let xy1 = this.app.toPos({ x: 0, y: 0 });
+      let xy2 = this.app.toPos({ x: 0, y: -25 });
+      let xy3 = this.app.toPos({ x: -130, y: -25 });
+      let xy4 = this.app.toPos({ x: -100, y: 0 });
 
       solo.lineTo(xy1.x, xy1.y);
       solo.lineTo(xy2.x, xy2.y);
@@ -174,7 +172,7 @@ export class MainMeue extends Container {
       solo.closePath();
       solo.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 365, y: 130 });
+      let pos = this.app.toPos({ x: 365, y: 130 });
 
       solo.text.x = pos.x;
       solo.text.y = pos.y;
@@ -209,14 +207,14 @@ export class MainMeue extends Container {
       local.clear();
       local.lineStyle(4, 0x000000, 1);
       local.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 60, y: 150 });
+      let xy = this.app.toPos({ x: 60, y: 150 });
       local.x = xy.x;
       local.y = xy.y;
 
-      let xy1: xypair = this.app.toPos({ x: 0, y: 0 });
-      let xy2: xypair = this.app.toPos({ x: 0, y: -25 });
-      let xy3: xypair = this.app.toPos({ x: 130, y: -25 });
-      let xy4: xypair = this.app.toPos({ x: 100, y: 0 });
+      let xy1 = this.app.toPos({ x: 0, y: 0 });
+      let xy2 = this.app.toPos({ x: 0, y: -25 });
+      let xy3 = this.app.toPos({ x: 130, y: -25 });
+      let xy4 = this.app.toPos({ x: 100, y: 0 });
 
       local.lineTo(xy1.x, xy1.y);
       local.lineTo(xy2.x, xy2.y);
@@ -225,7 +223,7 @@ export class MainMeue extends Container {
       local.closePath();
       local.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 85, y: 130 });
+      let pos = this.app.toPos({ x: 85, y: 130 });
 
       local.text.x = pos.x;
       local.text.y = pos.y;
@@ -272,14 +270,14 @@ export class MainMeue extends Container {
       online.clear();
       online.lineStyle(4, 0x000000, 1);
       online.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 200, y: 150 });
+      let xy = this.app.toPos({ x: 200, y: 150 });
       online.x = xy.x;
       online.y = xy.y;
 
-      let xy1: xypair = this.app.toPos({ x: -30, y: 0 });
-      let xy2: xypair = this.app.toPos({ x: 0, y: -25 });
-      let xy3: xypair = this.app.toPos({ x: 100, y: -25 });
-      let xy4: xypair = this.app.toPos({ x: 130, y: 0 });
+      let xy1 = this.app.toPos({ x: -30, y: 0 });
+      let xy2 = this.app.toPos({ x: 0, y: -25 });
+      let xy3 = this.app.toPos({ x: 100, y: -25 });
+      let xy4 = this.app.toPos({ x: 130, y: 0 });
 
       online.lineTo(xy1.x, xy1.y);
       online.lineTo(xy2.x, xy2.y);
@@ -288,7 +286,7 @@ export class MainMeue extends Container {
       online.closePath();
       online.endFill();
 
-      let pos: xypair = this.app.toPos({ x: 220, y: 130 });
+      let pos = this.app.toPos({ x: 220, y: 130 });
 
       online.text.x = pos.x;
       online.text.y = pos.y;

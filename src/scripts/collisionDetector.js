@@ -1,39 +1,18 @@
 import { Player } from "./Player";
 import { Application } from "pixi.js";
 
-export interface xypair {
-  x: number;
-  y: number;
-}
-
-export interface colidable {
-  name: string;
-  entity: Player;
-}
-
-export interface colidedEvent {
-  ent1: colidable;
-  ent2: colidable;
-  d: xypair;
-}
-
 export class collisionDetector {
-  colidables: colidable[];
-  colided: colidedEvent[];
-  out: String;
-  app: Application;
-
   constructor(app) {
     this.colidables = [];
     this.app = app;
     this.out = "test";
     this.colided = [];
   }
-  add = (name, entity) => {
+  add(name, entity) {
     this.colidables.push({ name: name, entity: entity });
-  };
+  }
 
-  colid = (ent1, ent2, range?) => {
+  colid(ent1, ent2, range) {
     for (let i = 0; i < this.colided.length; i++) {
       let pair = this.colided[i];
       if (
@@ -51,13 +30,13 @@ export class collisionDetector {
       }
     }
     return undefined;
-  };
+  }
 
-  log = () => {
+  log() {
     return this.out;
-  };
+  }
 
-  check = () => {
+  check() {
     this.colided = [];
 
     for (let i = 0; i < this.colidables.length; i++) {
@@ -115,7 +94,7 @@ export class collisionDetector {
         }
       }
     }
-  };
+  }
 }
 
 /*

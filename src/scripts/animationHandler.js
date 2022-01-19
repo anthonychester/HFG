@@ -5,31 +5,7 @@ import { TextStyle, Text, Texture, AnimatedSprite, Application } from "pixi.js";
 ##### Add number importance ######
 ################################*/
 
-export interface animationObject {
-  death: Texture[];
-  hit: Texture[];
-  attack2: Texture[];
-  attack1: Texture[];
-  fall: Texture[];
-  jump: Texture[];
-  run: Texture[];
-  idle: Texture[];
-}
-
 export class animationHandler {
-  curantAni: Texture[];
-  change: boolean;
-  nextAni: Texture[];
-  sprite: AnimatedSprite;
-  app: Application;
-  text: Text;
-  timesPlayed: number;
-  limit: number;
-  allAni: animationObject;
-  speed: number;
-  nextSpeed: number;
-  player: string;
-
   constructor(app, player, sprite, curantAni, allAni) {
     this.app = app;
     this.sprite = sprite;

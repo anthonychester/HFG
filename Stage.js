@@ -7,24 +7,7 @@ import { collisionDetector } from "./src/scripts/collisionDetector";
 import { animationObject } from "./src/scripts/animationHandler";
 import { physicsEngine } from "./src/scripts/physicsEngine";
 
-interface data {
-  p1: String;
-  p2: String;
-  map: String;
-  mode: String;
-}
-
 export class Stage extends Container {
-  app: applt;
-  player1: Player;
-  player2: Player;
-  map: Sprite;
-  loaded: boolean;
-  BH: ButtonHandler;
-  CD: collisionDetector;
-  data: data;
-  physicsEngine: physicsEngine;
-
   constructor(app) {
     super();
 
@@ -100,7 +83,7 @@ export class Stage extends Container {
     let animations1 = p1sheet.spritesheet.animations;
     let animations2 = p2sheet.spritesheet.animations;
 
-    let anis1: animationObject = {
+    let anis1 = {
       death: animations1["death"],
       hit: animations1["hit"],
       attack2: animations1["attack2"],
@@ -111,7 +94,7 @@ export class Stage extends Container {
       idle: animations1["idle"]
     };
 
-    let anis2: animationObject = {
+    let anis2 = {
       death: animations2["death"],
       hit: animations2["hit"],
       attack2: animations2["attack2"],
