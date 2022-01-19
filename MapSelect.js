@@ -5,21 +5,7 @@ import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
 import { windowFrame } from "./Standard";
 
-interface data {
-  p1: String;
-  p2: String;
-  map: String;
-  mode: String;
-}
-
 export class MapSelect extends Container {
-  app: applt;
-  BH: ButtonHandler;
-  previous: any;
-  mode: String;
-  selected: resizeableGraphics;
-  data: data;
-
   constructor(app) {
     super();
     this.app = app;
@@ -40,7 +26,7 @@ export class MapSelect extends Container {
       backround.beginFill(0xff0000);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
     });
@@ -64,7 +50,7 @@ export class MapSelect extends Container {
         fill: ["#000000"],
         fontSize: 14
       });
-      let xyt: xypair = this.app.toPos({ x: 30 + i * 105, y: 15 + 23.5 });
+      let xyt = this.app.toPos({ x: 30 + i * 105, y: 15 + 23.5 });
       map.text = new resizeableText(
         this.app,
         this.app.data.maps.folderNames[i],
@@ -76,10 +62,10 @@ export class MapSelect extends Container {
         map.clear();
         map.lineStyle(4, 0x000000, 1);
         map.beginFill(color);
-        let xy: xypair = this.app.toPos({ x: 25 + i * 100, y: 15 });
+        let xy = this.app.toPos({ x: 25 + i * 100, y: 15 });
         map.x = xy.x;
         map.y = xy.y;
-        let xysize: xypair = this.app.toPos({ x: 50, y: 50 });
+        let xysize = this.app.toPos({ x: 50, y: 50 });
         map.drawRect(0, 0, xysize.x, xysize.y);
         map.endFill();
       });

@@ -3,23 +3,7 @@ import { applt, xypair } from "./app";
 import { resizeableGraphics } from "./customElements/resizeableGraphics";
 import { resizeableText } from "./customElements/resizeableText";
 
-interface data {
-  p1: String;
-  p2: String;
-  map: String;
-  mode: String;
-}
-
 export class LoadingScreen extends Container {
-  app: applt;
-  data: data | any;
-  dot1: resizeableGraphics;
-  dot2: resizeableGraphics;
-  dot3: resizeableGraphics;
-  time: number;
-  text: resizeableText;
-  loaded: boolean;
-
   constructor(app) {
     super();
     this.app = app;
@@ -57,7 +41,7 @@ export class LoadingScreen extends Container {
       backround.beginFill(0x000000);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
     });
@@ -76,8 +60,8 @@ export class LoadingScreen extends Container {
     this.dot1.onResize((color = 0xffffff) => {
       this.dot1.clear();
       this.dot1.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 150, y: 150 });
-      let r: xypair = this.app.toPos({ x: 10, y: 0 });
+      let xy = this.app.toPos({ x: 150, y: 150 });
+      let r = this.app.toPos({ x: 10, y: 0 });
       this.dot1.drawCircle(xy.x, xy.y, r.x);
     });
     this.addChild(this.dot1);
@@ -86,8 +70,8 @@ export class LoadingScreen extends Container {
     this.dot2.onResize((color = 0xffffff) => {
       this.dot2.clear();
       this.dot2.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 250, y: 150 });
-      let r: xypair = this.app.toPos({ x: 10, y: 0 });
+      let xy = this.app.toPos({ x: 250, y: 150 });
+      let r = this.app.toPos({ x: 10, y: 0 });
       this.dot2.drawCircle(xy.x, xy.y, r.x);
     });
     this.addChild(this.dot2);
@@ -96,8 +80,8 @@ export class LoadingScreen extends Container {
     this.dot3.onResize((color = 0xffffff) => {
       this.dot3.clear();
       this.dot3.beginFill(color);
-      let xy: xypair = this.app.toPos({ x: 350, y: 150 });
-      let r: xypair = this.app.toPos({ x: 10, y: 0 });
+      let xy = this.app.toPos({ x: 350, y: 150 });
+      let r = this.app.toPos({ x: 10, y: 0 });
       this.dot3.drawCircle(xy.x, xy.y, r.x);
     });
     this.addChild(this.dot3);

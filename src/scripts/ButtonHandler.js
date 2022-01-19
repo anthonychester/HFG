@@ -1,27 +1,6 @@
 import { Application } from "pixi.js";
 
-export interface press {
-  code: number;
-  time: number;
-  isCurPress: boolean;
-}
-
-export interface control {
-  UP: number;
-  DOWN: number;
-  LEFT: number;
-  RIGHT: number;
-  ATTACK1: number;
-  ATTACK2: number;
-}
-
 export class ButtonHandler {
-  app: Application;
-  pressed: press[];
-  delay: Array<number>; //An array of char used _sec ago
-  elapedTime: number;
-  callbackPress: any;
-
   constructor(app) {
     this.app = app;
     this.pressed = [];
@@ -31,11 +10,11 @@ export class ButtonHandler {
     document.addEventListener("keyup", this.onKeyUp.bind(this));
   }
 
-  onPress = (fun) => {
+  onPress(fun) {
     this.callbackPress = fun;
-  };
+  }
 
-  onKeyDown = (e) => {
+  onKeyDown(e) {
     //console.log("KeyDown event fired!", e.keyCode);
     let notin = true;
     for (let i in this.pressed) {
@@ -48,9 +27,9 @@ export class ButtonHandler {
     if (notin) {
       this.pressed.push({ code: e.keyCode, time: 0, isCurPress: true });
     }
-  };
+  }
 
-  onKeyUp = (e) => {
+  onKeyUp(e) {
     //console.log("KeyUp event fired!", e.keyCode);
 
     for (let i in this.pressed) {
@@ -61,9 +40,9 @@ export class ButtonHandler {
     if (this.callbackPress) {
       this.callbackPress(e);
     }
-  };
+  }
 
-  isPress = (code: number) => {
+  isPress(code) {
     for (let i in this.pressed) {
       let press = this.pressed[i];
       if (code === press.code && press.isCurPress) {
@@ -72,9 +51,9 @@ export class ButtonHandler {
       }
     }
     return false;
-  };
+  }
 
-  loop = (d) => {
+  loop(d) {
     for (let i = 0; i < this.pressed.length; i++) {
       let button = this.pressed[i];
       if (button.time > 100) {
@@ -85,5 +64,5 @@ export class ButtonHandler {
     }
 
     this.elapedTime += d;
-  };
+  }
 }

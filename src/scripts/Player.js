@@ -13,42 +13,7 @@ import { AttackManager } from "./AttackManager";
 import { healthBar } from "./healthBar";
 import { collisionDetector } from "./collisionDetector";
 
-interface xypair {
-  x: number;
-  y: number;
-}
-
 export class Player {
-  lives: number;
-  health: number;
-  onGround: Boolean;
-  app: Application;
-  BH: ButtonHandler;
-  AH: animationHandler;
-  AM: AttackManager;
-  animations: animationObject;
-  sprite: AnimatedSprite;
-  x: number;
-  y: number;
-  gravity: number;
-  gravitySpeed: number;
-  speedY: number;
-  speedX: number;
-  text: Text;
-  out: string;
-  jumps: number;
-  runSpeedMax: number;
-  walkSpeedMax: number;
-  state: string;
-  direction: string;
-  player: string;
-  controls: control;
-  limit: xypair;
-  padding: number;
-  HB: healthBar;
-  CD: collisionDetector;
-  pdata: any; //add porper data type
-
   constructor(app, cont, player, textures, animations, CD, pdata) {
     this.x = 100;
     this.y = 0;
@@ -121,7 +86,7 @@ export class Player {
     this.HB = new healthBar(app, player, this.health, this.lives);
   }
 
-  up = () => {
+  up() {
     //this.y -= 1;
     if (this.jumps <= 2) {
       this.speedY += -3;
@@ -129,35 +94,35 @@ export class Player {
       //this.sprite.textures = this.animations.down;
       this.AH.setNextAni(this.animations.jump, 0.045);
     }
-  };
+  }
 
-  down = () => {
+  down() {
     this.speedY += 0.2;
-  };
+  }
 
-  left = () => {
+  left() {
     if (Math.abs(this.speedX - 1) >= this.runSpeedMax + 1) {
     } else {
       this.speedX -= 1;
     }
-  };
+  }
 
-  right = () => {
+  right() {
     if (Math.abs(this.speedX + 1) >= this.runSpeedMax + 1) {
     } else {
       this.speedX += 1;
     }
-  };
+  }
 
-  reset = () => {
+  reset() {
     this.x = 0;
     this.y = 0;
     this.gravitySpeed = 0;
     this.speedY = 0;
     this.speedX = 0;
-  };
+  }
 
-  applyForces = () => {
+  applyForces() {
     /*
     this.gravitySpeed += this.gravity;
     this.x += this.speedX;
@@ -193,7 +158,7 @@ export class Player {
     }
   };
 
-  applyDrag = () => {
+  applyDrag() {
     if (this.speedX === 0) {
     } else if (this.speedX > 0) {
       this.speedX -= 0.2;
@@ -201,15 +166,15 @@ export class Player {
       this.speedX += 0.2;
     }
     */
-  };
+  }
 
   //limit maximue foreces
 
-  takeHit = (ammount) => {
+  takeHit(ammount) {
     this.health -= ammount;
-  };
+  }
 
-  update = (delta) => {
+  update(delta) {
     if (this.BH.isPress(this.controls.RIGHT)) {
       this.right();
     }
@@ -291,11 +256,11 @@ export class Player {
       this.x += this.speedX;
       this.out = "";
     }
-  };
+  }
 
-  onresize = () => {
+  onresize() {
     //@ts-ignore
     this.sprite.scale.set(this.app.xm, this.app.xm);
     this.HB.resize();
-  };
+  }
 }

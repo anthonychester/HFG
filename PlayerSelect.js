@@ -6,13 +6,6 @@ import { resizeableText } from "./customElements/resizeableText";
 import { windowFrame } from "./Standard";
 
 export class PlayerSelect extends Container {
-  app: applt;
-  BH: ButtonHandler;
-  previous: any;
-  mode: String;
-  selected: resizeableGraphics;
-  p1: String;
-
   constructor(app) {
     super();
     this.app = app;
@@ -33,7 +26,7 @@ export class PlayerSelect extends Container {
       backround.beginFill(0xff0000);
       backround.x = 0;
       backround.y = 0;
-      let xy: xypair = this.app.toPos({ x: 500, y: 200 });
+      let xy = this.app.toPos({ x: 500, y: 200 });
       backround.drawRect(0, 0, xy.x, xy.y);
       backround.endFill();
     });
@@ -57,7 +50,7 @@ export class PlayerSelect extends Container {
         fill: ["#000000"],
         fontSize: 14
       });
-      let xyt: xypair = this.app.toPos({ x: 30 + i * 105, y: 15 + 23.5 });
+      let xyt = this.app.toPos({ x: 30 + i * 105, y: 15 + 23.5 });
       player.text = new resizeableText(
         this.app,
         this.app.data.players.folderNames[i],
@@ -69,10 +62,10 @@ export class PlayerSelect extends Container {
         player.clear();
         player.lineStyle(4, 0x000000, 1);
         player.beginFill(color);
-        let xy: xypair = this.app.toPos({ x: 25 + i * 100, y: 15 });
+        let xy = this.app.toPos({ x: 25 + i * 100, y: 15 });
         player.x = xy.x;
         player.y = xy.y;
-        let xysize: xypair = this.app.toPos({ x: 50, y: 50 });
+        let xysize = this.app.toPos({ x: 50, y: 50 });
         player.drawRect(0, 0, xysize.x, xysize.y);
         player.endFill();
       });
