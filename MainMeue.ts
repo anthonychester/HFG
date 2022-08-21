@@ -300,13 +300,9 @@ export class MainMeue extends Container {
         fontSize: 20
       });
 
-      let version = new resizeableText(
-        this.app,
-        this.app.data.version,
-        soloStyle,
-        400,
-        10
-      );
+      let v = this.app.data ? this.app.data.version : " ";
+
+      let version = new resizeableText(this.app, v, soloStyle, 400, 10);
 
       this.addChild(version);
     });
@@ -320,6 +316,20 @@ export class MainMeue extends Container {
     });
 
     this.addChild(online);
+
+    let two = new resizeableGraphics(this.app);
+
+    two.sprite = Sprite.from("src/icons/1p.png");
+    this.addChild(two.sprite);
+    two.sprite.x = 0;
+    two.sprite.y = 0;
+    //@ts-ignore
+    two.sprite.zIndex = 2;
+    two.onResize(() => {
+      console.log(0.001 / this.app.xm);
+      two.sprite.scale.x = this.app.xm / 2.5;
+      two.sprite.scale.y = this.app.ym / 2.5;
+    });
   }
 
   resize() {}
