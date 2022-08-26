@@ -326,7 +326,6 @@ export class MainMeue extends Container {
     //@ts-ignore
     two.sprite.zIndex = 2;
     two.onResize(() => {
-      console.log(0.001 / this.app.xm);
       two.sprite.scale.x = this.app.xm / 2.5;
       two.sprite.scale.y = this.app.ym / 2.5;
     });

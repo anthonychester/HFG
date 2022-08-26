@@ -24,29 +24,58 @@ export class MainMeue extends Container {
   }
 
   loaded() {
-    let info = new imageButton(
-      this,
-      10,
-      10,
-      0.25,
-      0.25,
-      "./src/icons/MainMeue/InfoIcon.png",
-      "./src/icons/MainMeue/InfoIcon-Dark.png"
-    );
-    info.onClick(() => {
-      if (this.app.curent === this) {
-        //@ts-ignore
-        this.app.curent.zIndex = 0;
-        this.app.curent = this.app.secne.Info;
-        this.app.secne.Info.onswitchto(this);
-        //@ts-ignore
-        this.app.curent.zIndex = 1;
-      }
+    let info = new imageButton(this.app, {
+      con: this,
+      x: 25,
+      y: 200,
+      sw: 0.25,
+      sh: 0.25,
+      sprit1source: "./src/icons/MainMeue/InfoIcon.png",
+      sprit2source: "./src/icons/MainMeue/InfoIcon-Dark.png"
     });
+    info.setNextScreen(this.app.secne.Info);
     this.addChild(info);
-    /*two.sprite = Sprite.from(
-      this.app.loader.resources["./src/icons/MainMeue/InfoIcon.png"].texture
-    );*/
+    let settings = new imageButton(this.app, {
+      con: this,
+      x: 435,
+      y: 200,
+      sw: 0.25,
+      sh: 0.25,
+      sprit1source: "./src/icons/MainMeue/SettingsIcon.png",
+      sprit2source: "./src/icons/MainMeue/SettingsIcon-Dark.png"
+    });
+    settings.setNextScreen(this.app.secne.Settings);
+    this.addChild(settings);
+    let title = new imageButton(this.app, {
+      con: this,
+      x: 130,
+      y: 25,
+      sw: 0.5,
+      sh: 0.5,
+      sprit1source: "./src/icons/MainMeue/MainTitle.png"
+    });
+    this.addChild(title);
+    this.addChild(settings);
+    let log = new imageButton(this.app, {
+      con: this,
+      x: 400,
+      y: 10,
+      sw: 0.15,
+      sh: 0.15,
+      sprit1source: "./src/icons/MainMeue/Version(2).png"
+    });
+    this.addChild(log);
+    let local = new imageButton(this.app, {
+      con: this,
+      x: 50,
+      y: 135,
+      sw: 0.25,
+      sh: 0.25,
+      sprit1source: "./src/icons/MainMeue/LocalButton.png",
+      sprit2source: "./src/icons/MainMeue/LocalButton-Dark.png"
+    });
+    local.setNextScreen(this.app.secne.PlayerSelect);
+    this.addChild(local);
     this.app.resize();
   }
 

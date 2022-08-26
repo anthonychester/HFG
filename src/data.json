@@ -26,5 +26,8 @@
   },
   "physics": {
     "gravity": 0.4
+  },
+  "rules": {
+    "numOfPlayer": 2
   }
 }

@@ -36,7 +36,6 @@ export class LoadingScreen extends Container {
   }
 
   onload() {
-    console.log(this);
     if (this === this.app.curent) {
       //@ts-ignore
       this.app.curent.zIndex = 0;

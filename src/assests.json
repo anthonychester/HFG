@@ -1,0 +1,28 @@
+{
+  "unnamed": [
+    "./src/data.json",
+    "./src/images/circle/spritesheet.json",
+    "./src/characters/MH1/spritesheet.json",
+    "./src/characters/MH1/data.json",
+    "./src/characters/MH2/spritesheet.json",
+    "./src/characters/MH2/data.json",
+    "./src/maps/map1/data.json",
+    "./src/maps/map1/map.png",
+    "./mods/Joycon/data.json",
+    "./src/icons/MainMeue/InfoIcon.png",
+    "./src/icons/MainMeue/InfoIcon-Dark.png",
+    "./src/icons/MainMeue/SettingsIcon.png",
+    "./src/icons/MainMeue/SettingsIcon-Dark.png",
+    "./src/icons/MainMeue/MainTitle.png",
+    "./src/icons/MainMeue/Version(2).png",
+    "./src/icons/MainMeue/LocalButton.png",
+    "./src/icons/MainMeue/LocalButton-Dark.png",
+    "./src/icons/PlayerSelectScreen/NoChar.png",
+    "./src/icons/PlayerSelectScreen/NoChar-Text.png",
+    "./src/icons/PlayerSelectScreen/Blank-Full.png"
+  ],
+  "named": [
+    ["LEMONMILK-Regular", "./src/fonts/LEMONMILK-Regular.otf"],
+    ["KaiseiHarunoUmi-Medium", "./src/fonts/KaiseiHarunoUmi-Medium.ttf"]
+  ]
+}

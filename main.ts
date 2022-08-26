@@ -1,6 +1,7 @@
 //interface
 //|||||||||||||||scale border width
-import * as PIXI from "pixi.js";
+
+import { Loader } from "./loader";
 
 import { applt } from "./app";
 import { MainMeue } from "./pages/MainMeue";
@@ -8,12 +9,11 @@ import { Settings } from "./Settings";
 import { Info } from "./Info";
 import { Controls } from "./Controls";
 import { MapSelect } from "./MapSelect";
-import { PlayerSelect } from "./PlayerSelect";
+import { PlayerSelect } from "./pages/PlayerSelect";
 import { LoadingScreen } from "./LoadingScreen";
 import { Stage } from "./Stage";
 import JoyconMod from "./mods/Joycon/main";
 import { inputHandler } from "./src/scripts/inputHandler";
-import { Loading } from "./Loading";
 
 const inputImageAspectRatio = window.innerWidth / window.innerHeight;
 
@@ -37,15 +37,10 @@ const app = new applt(outputWidth, outputHeight, {
   resolution: res,
   backgroundColor: 0x1099bb
 });
-//@ts-ignore
-app.loader = PIXI.Loader.shared;
-app.mods = {};
-app.loading = new Loading(app);
-app.stage.addChild(app.loading);
-//@ts-ignore
-app.stage.sortableChildren = true;
 
 document.body.appendChild(app.view);
+
+app.stage.addChild(app.loading);
 
 app.secne = {
   MainMeue: new MainMeue(app),
@@ -57,17 +52,9 @@ app.secne = {
   LoadingScreen: new LoadingScreen(app),
   Stage: new Stage(app)
 };
-
 app.curent = app.secne.MainMeue;
 //@ts-ignore
 app.curent.zIndex = 1;
-
-app.updatesize = new CustomEvent("updatesize", {
-  detail: {},
-  bubbles: true,
-  cancelable: true,
-  composed: false
-});
 
 const updateloaded = new CustomEvent("loaded", {
   detail: {},
@@ -76,9 +63,10 @@ const updateloaded = new CustomEvent("loaded", {
   composed: false
 });
 
-let loaded = false;
+app.isloaded = false;
 
-function setup() {
+app.setOnLoad((loader, resources) => {
+  app.loader.resources = resources;
   let Data = app.loader.resources["./src/data.json"];
   app.data = Data.data;
 
@@ -90,15 +78,18 @@ function setup() {
   app.loading.disable();
   app.resize();
   window.dispatchEvent(updateloaded);
-  loaded = true;
-}
-app.xm = app.view.width / 500;
-app.ym = app.view.height / 200;
+  app.isloaded = true;
+});
 
+if (!app.isloaded) {
+  let loader = new Loader(app);
+  loader.load();
+}
 for (let i in app.secne) {
   app.stage.addChild(app.secne[i]);
 }
-if (!loaded) {
+if (!app.isloaded) {
+  /*
   app.loader
     .add("./src/data.json", {
       crossOrigin: "anonymous"
@@ -136,18 +127,31 @@ if (!loaded) {
     .add("./src/icons/MainMeue/InfoIcon-Dark.png", {
       crossOrigin: "anonymous"
     })
-    .add("./src/icons/MainMeue/Settings.png", {
+    .add("./src/icons/MainMeue/SettingsIcon.png", {
       crossOrigin: "anonymous"
     })
-    .add("./src/icons/MainMeue/Settings-Dark.png", {
+    .add("./src/icons/MainMeue/SettingsIcon-Dark.png", {
+      crossOrigin: "anonymous"
+    })
+    .add("./src/icons/MainMeue/MainTitle.png", {
+      crossOrigin: "anonymous"
+    })
+    .add("./src/icons/MainMeue/Version(2).png", {
+      crossOrigin: "anonymous"
+    })
+    .add("./src/icons/MainMeue/LocalButton.png", {
+      crossOrigin: "anonymous"
+    })
+    .add("./src/icons/MainMeue/LocalButton-Dark.png", {
       crossOrigin: "anonymous"
     })
     .load(setup);
+    */
 }
 app.loading.inable();
 // Listen for animate update
 app.ticker.add(function (delta) {
-  if (loaded) {
+  if (app.isloaded) {
     //@ts-ignore
     app.curent.update(delta);
     app.inputHandler.update(delta);

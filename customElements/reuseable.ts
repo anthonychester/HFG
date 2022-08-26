@@ -1,6 +1,6 @@
 import { resizeableGraphics } from "./resizeableGraphics";
 
-export function backroundCreate(app, color: String) {
+export function backroundCreate(app, color: String): resizeableGraphics {
   let backround = new resizeableGraphics(this.app);
 
   backround.onResize(() => {

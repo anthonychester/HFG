@@ -1,0 +1,17 @@
+{
+  "info": {
+    "name": "Materal Hero 2",
+    "accent-color": "0xD14F4F"
+  },
+  "physics": {
+    "weight": 50,
+    "speed": 20,
+    "float": 20
+  },
+  "image": {
+    "scale": {
+      "x": 1,
+      "y": 1
+    }
+  }
+}
