@@ -111,6 +111,14 @@ export class PlayerSelect extends Container {
       if (this.current < this.app.data.rules.numOfPlayer - 1) {
         this.current += 1;
       } else {
+        if (this.app.curent === this) {
+          //@ts-ignore
+          this.app.curent.zIndex = 0;
+          this.app.curent = this.app.secne.MapSelect;
+          this.app.secne.MapSelect.onswitchto(this);
+          //@ts-ignore
+          this.app.curent.zIndex = 1;
+        }
       }
     };
     return char;

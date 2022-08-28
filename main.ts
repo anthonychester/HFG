@@ -8,7 +8,7 @@ import { MainMeue } from "./pages/MainMeue";
 import { Settings } from "./Settings";
 import { Info } from "./Info";
 import { Controls } from "./Controls";
-import { MapSelect } from "./MapSelect";
+import { MapSelect } from "./pages/MapSelect";
 import { PlayerSelect } from "./pages/PlayerSelect";
 import { LoadingScreen } from "./LoadingScreen";
 import { Stage } from "./Stage";
@@ -69,6 +69,7 @@ app.setOnLoad((loader, resources) => {
   app.loader.resources = resources;
   let Data = app.loader.resources["./src/data.json"];
   app.data = Data.data;
+  app.devlog("dev", app.data.version);
 
   app.mods["JoyconMod"] = new JoyconMod(
     app,

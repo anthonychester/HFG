@@ -18,6 +18,7 @@ export interface playerCont {
 
 export interface dataT {
   version: String;
+  isDev: boolean;
   control: {
     player1: playerCont;
     player2: playerCont;
@@ -57,7 +58,6 @@ export class applt extends Application {
 
   constructor(outputWidth, outputHeight, options?) {
     super(outputWidth, outputHeight, options);
-
     //@ts-ignore
     this.loader = PIXI.Loader.shared;
     this.mods = {};
@@ -128,4 +128,10 @@ export class applt extends Application {
 
     window.dispatchEvent(this.updatesize);
   };
+
+  devlog(...args) {
+    if (this.data.isDev) {
+      console.log(...args);
+    }
+  }
 }

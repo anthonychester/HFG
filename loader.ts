@@ -3,6 +3,8 @@ import { applt } from "./app";
 import * as assests from "./src/assests.json";
 //@ts-ignore
 import * as characters from "./src/characters/characters.json";
+//@ts-ignore
+import * as maps from "../src/maps/maps.json";
 
 interface Assests {
   unnamed: string[];
@@ -29,6 +31,7 @@ export class Loader {
 
   load() {
     this.loadCharacters();
+    this.loadMaps();
 
     for (let i in this.assests.unnamed) {
       this.toload += 1;
@@ -61,6 +64,16 @@ export class Loader {
       this.add(loc + "data.json");
       this.add(loc + "moves.json");
       this.add(loc + "spritesheet.json");
+    }
+  }
+
+  loadMaps() {
+    for (let i in maps.list) {
+      let loc = "./src/maps/" + maps.list[i].location + "/";
+      this.add(loc + "icon.png");
+      this.add(loc + "map.png");
+      this.add(loc + "preview.png");
+      this.add(loc + "data.json");
     }
   }
 }

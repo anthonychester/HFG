@@ -2,7 +2,6 @@ import { Container, Sprite } from "pixi.js";
 import { applt, xypair } from "../app";
 import { imageButton } from "../customElements/imageButton";
 import { backroundCreate } from "../customElements/reuseable";
-import * as PIXI from "pixi.js";
 
 export class MainMeue extends Container {
   app: applt;

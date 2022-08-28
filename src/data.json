@@ -1,5 +1,6 @@
 {
-  "version": "dev 0.0.1",
+  "version": "0.0.1",
+  "isDev": true,
   "control": {
     "player1": {
       "UP": 87,
