@@ -1,10 +1,6 @@
 {
   "list": [
     {
-      "name": "Map1",
-      "location": "map1"
-    },
-    {
       "name": "Test",
       "location": "test"
     }

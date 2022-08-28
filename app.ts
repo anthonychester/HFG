@@ -16,6 +16,13 @@ export interface playerCont {
   ATTACK2: number;
 }
 
+export interface gameData {
+  mode: number,
+  chars: number[],
+  map: number,
+  players: number
+}
+
 export interface dataT {
   version: String;
   isDev: boolean;
@@ -55,6 +62,7 @@ export class applt extends Application {
   loader: any;
   updatesize: CustomEvent;
   isloaded: boolean;
+  gameData: gameData;
 
   constructor(outputWidth, outputHeight, options?) {
     super(outputWidth, outputHeight, options);

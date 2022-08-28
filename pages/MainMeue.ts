@@ -73,7 +73,24 @@ export class MainMeue extends Container {
       sprit1source: "./src/icons/MainMeue/LocalButton.png",
       sprit2source: "./src/icons/MainMeue/LocalButton-Dark.png"
     });
-    local.setNextScreen(this.app.secne.PlayerSelect);
+    //gameData
+    local.onClick(() => {
+      if (this.app.curent === this) {
+        this.app.gameData = {
+          mode: 0,
+          chars: [],
+          map: -1,
+          players: this.app.data.rules.numOfPlayer
+        };
+
+        //@ts-ignore
+        this.app.curent.zIndex = 0;
+        this.app.curent = this.app.secne.PlayerSelect;
+        this.app.secne.PlayerSelect.onswitchto(this);
+        //@ts-ignore
+        this.app.curent.zIndex = 1;
+      }
+    });
     this.addChild(local);
     this.app.resize();
   }

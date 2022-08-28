@@ -43,12 +43,12 @@ export class MapSelect extends Container {
       this.updateSlection(self.data);
     };
     ran.callbacks.onclick = (self) => {
-      this.app.devlog(self.data.id);
+      this.nextScreen(self.data.id);
     };
     this.icons.push(ran);
 
     for (let i = 0; i < maps.list.length; i++) {
-      let pi = i + 1;
+      let pi = i + 2;
       this.icons.push(
         this.newMaps(83 * pi + 142, Math.trunc(pi / 3) * 42 + 28, i)
       );
@@ -110,12 +110,18 @@ export class MapSelect extends Container {
       this.updateSlection(self.data);
     };
     map.callbacks.onclick = (self) => {
-      this.app.devlog(self.data.id);
+      this.nextScreen(self.data.id);
     };
     return map;
   }
+  nextScreen(id: number) {
+    if (id == -1) {
+      id = Math.floor(Math.random() * maps.list.length);
+    }
+    this.app.gameData.map = id;
+  }
   updateSlection(data: any) {
-    if (data.id > 0) {
+    if (data.id >= 0) {
       let pre = "./src/maps/" + maps.list[data.id].location + "/";
       this.selection = data.id;
       //@ts-ignore

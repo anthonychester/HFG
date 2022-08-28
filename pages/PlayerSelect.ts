@@ -112,6 +112,8 @@ export class PlayerSelect extends Container {
         this.current += 1;
       } else {
         if (this.app.curent === this) {
+          this.app.gameData.chars = this.selections;
+
           //@ts-ignore
           this.app.curent.zIndex = 0;
           this.app.curent = this.app.secne.MapSelect;
